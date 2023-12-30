@@ -25,6 +25,8 @@ class SampleAppTests():
         try:
             sa._click_dropdown()
             sa._click_dropdown_option("Scatter Plot")
+            sa._hover_over_top_scatter_point()
+            assert sa._get_attribute_top_scatter_point_value() == "medal=gold<br>nation=South Korea<br>count=24"
         except Exception as e:
             print(f"An error occurred: {e}")
             raise

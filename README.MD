@@ -18,3 +18,7 @@ TODO :
 1. to pause the debugger in chrome due to react objects : 
 - Chrome Dev Tools : console 
 - `setTimeout(()=>{debugger;},5000);`
+
+2. Pause test : 
+```import pdb```
+```pdb.set_trace() #add to line```
