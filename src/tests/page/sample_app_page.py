@@ -15,7 +15,8 @@ class SampleApp(PageFactory):
 
     locators = {
         '_plot_dropdown': ('ID', "react-select-2--value"),
-        '_plot_dropdown_option': ('XPATH', "//div[contains(@class, 'VirtualizedSelectOption')]")
+        '_plot_dropdown_scatter_plot': ('XPATH', "//div[contains(@class, 'VirtualizedSelectOption') and text()= 'Scatter Plot']"),
+        '_plot_dropdown_bar_plot': ('XPATH', "//div[contains(@class, 'VirtualizedSelectOption') and text()= 'Bar Plot']")
     }
 
 
@@ -24,4 +25,7 @@ class SampleApp(PageFactory):
 
 
     def _click_dropdown_option(self, option):
-        self._plot_dropdown_option.select_element_by_value(option)
+        if option == 'Bar Plot':
+            self._plot_dropdown_bar_plot.click()
+        else:
+            self._plot_dropdown_scatter_plot.click()
