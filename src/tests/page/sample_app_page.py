@@ -30,10 +30,12 @@ class SampleApp(PageFactory):
             self._plot_dropdown_bar_plot.click()
         else:
             self._plot_dropdown_scatter_plot.click()
-            
+
+    
     def _hover_over_top_scatter_point(self):
         self._plot_svg_scatter_canvas_top_point.hover()
 
+    
     def _get_attribute_top_scatter_point_value(self):
         return self._plot_svg_scatter_canvas_top_point_val.getAttribute("data-unformatted")
 
