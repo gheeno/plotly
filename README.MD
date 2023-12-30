@@ -1,10 +1,6 @@
-Plotly Dash 2.0 introduction
+Plotly Dash 2.0 practice.
 
-TODO : 
-1. Build a local web app. 
-2. Create an automation test framework for the built webapp.
-
-## INSTALLATION ##
+### INSTALLATION ###
 1. Install pip requirements : 
     ```commandline
     ~ pip install -r requirements.txt 
@@ -13,8 +9,14 @@ TODO :
     ~ pip install -e .
     ```
 
+### STEPS ###
+1. Run the web app. 
+- `python src/apps/sample_app.py`
 
-## NOTES During development ##
+2. Execute pytest.
+- `pytest -v`
+
+### NOTES During development ###
 1. to pause the debugger in chrome due to react objects : 
 - Chrome Dev Tools : console 
 - `setTimeout(()=>{debugger;},5000);`
@@ -22,3 +24,5 @@ TODO :
 2. Pause test : 
 ```import pdb```
 ```pdb.set_trace() #add to line```
+
+3. SVG `//*[name()="samplesvgname"]`
