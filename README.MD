@@ -17,12 +17,12 @@ Plotly Dash 2.0 practice.
 - `pytest -v`
 
 ### NOTES During development ###
-1. to pause the debugger in chrome due to dynamic objects : 
-- Chrome Dev Tools : console 
-- `setTimeout(()=>{debugger;},5000);`
+1. To pause the debugger in chrome due to dynamic objects : 
+    - Chrome Dev Tools : console 
+    - `setTimeout(()=>{debugger;},5000);`
 
-2. Pause test : 
-```import pdb```
-```pdb.set_trace() #add to line```
+2. To Pause test : 
+    ```import pdb```
+    ```pdb.set_trace() #add to line```
 
-3. SVG `//*[name()="samplesvgname"]`
+3. SVG xpath sample : `//*[name()="samplesvgname"]`
