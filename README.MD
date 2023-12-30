@@ -17,7 +17,7 @@ Plotly Dash 2.0 practice.
 - `pytest -v`
 
 ### NOTES During development ###
-1. to pause the debugger in chrome due to react objects : 
+1. to pause the debugger in chrome due to dynamic objects : 
 - Chrome Dev Tools : console 
 - `setTimeout(()=>{debugger;},5000);`
 
