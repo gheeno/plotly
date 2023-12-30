@@ -12,3 +12,9 @@ TODO :
     ```commandline
     ~ pip install -e .
     ```
+
+
+## NOTES During development ##
+1. to pause the debugger in chrome due to react objects : 
+- Chrome Dev Tools : console 
+- `setTimeout(()=>{debugger;},5000);`
