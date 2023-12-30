@@ -1,0 +1,8 @@
+dash
+dash-bootstrap-components
+selenium-page-factory
+selenium
+allure-pytest
+pytest
+robotframework
+pandas
