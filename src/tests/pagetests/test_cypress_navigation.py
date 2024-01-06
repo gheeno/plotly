@@ -3,17 +3,16 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(
   os.path.dirname(__file__), '..')))
 
-from page.cypress_landing_page import CypressLandingPage
-from page.cypress_about_us_page import CypressAboutUsPage
-from page.cypress_visual_reviews_page import CypressVisualReviewsPage
-from page.cypress_cloud_options import CypressCloudOptions
+from page.cypress_landing_page import CypressLandingPage as CLP
+from page.cypress_about_us_page import CypressAboutUsPage as CAUP
+from page.cypress_visual_reviews_page import CypressVisualReviewsPage as CVR
+from page.cypress_cloud_options import CypressCloudOptions as CCO
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from dotenv import load_dotenv
-import time
 import pyperclip
 import logging
 import pytest
@@ -38,7 +37,7 @@ class CypressNavigationTests():
         • Users are able to visit the website and able to scroll down to “Loved by OSS,
           trusted by Enterprise” and see the weekly downloads number. 
         '''
-        clp = CypressLandingPage(self.driver)
+        clp = CLP(self.driver)
         try:
             clp._scroll_to_header_testimony()
             assert clp._get_string_header_testimony() == "Loved by OSS, trusted by Enterprise"
@@ -52,8 +51,8 @@ class CypressNavigationTests():
         '''
         • User is able to click on Company and then on “About Cypress”
         '''
-        clp = CypressLandingPage(self.driver)
-        cau = CypressAboutUsPage(self.driver)
+        clp = CLP(self.driver)
+        cau = CAUP(self.driver)
         try:
             clp._hover_company_tab()
             clp._click_about_cypress_flex()
@@ -69,7 +68,7 @@ class CypressNavigationTests():
         • User is able to click on “Install” and then on “npm install cypress” and make sure
           the copied text is “npm install cypress --save-dev”
         '''
-        clp = CypressLandingPage(self.driver)
+        clp = CLP(self.driver)
         try:
             clp._click_install_button()
             clp._click_npm_install_cypress_button()
@@ -84,8 +83,8 @@ class CypressNavigationTests():
         '''
         • User is able to click on “Product” and then “visual review”
         '''
-        clp = CypressLandingPage(self.driver)
-        cvr = CypressVisualReviewsPage(self.driver)
+        clp = CLP(self.driver)
+        cvr = CVR(self.driver)
 
         try:
             clp._hover_product_tab()
@@ -114,8 +113,8 @@ class CypressNavigationTests():
         # NOTE : I am unable to find the Test Analytics inside the Smart Orchestration's page.
         # Instead, I will assert on Test Analytics button on the on which if it's hovered, there is a green circle around it.
 
-        clp = CypressLandingPage(self.driver)
-        cco = CypressCloudOptions(self.driver)
+        clp = CLP(self.driver)
+        cco = CCO(self.driver)
         try:
             clp._hover_product_tab() 
             clp._click_smart_orchestration_dropdown()
