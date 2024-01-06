@@ -19,7 +19,8 @@ class CypressLandingPage(PageFactory):
         '_button_install': ('XPATH', "//button[text()=' Install ']"),
         '_button_npm_install_cypress': ('XPATH', "//span[text()='npm install cypress']"),
         '_tab_product': ('ID', "dropdownProduct"),
-        '_visual_review_dropdown': ('XPATH', "//span[text()='Visual Reviews']")
+        '_visual_review_dropdown': ('XPATH', "//span[text()='Visual Reviews']"),
+        '_smart_orchestration_dropdown': ('XPATH', "(//span[text()='Smart Orchestration'])[1]")
     }
 
     ## ACTIONS ##
@@ -58,3 +59,7 @@ class CypressLandingPage(PageFactory):
 
     def _click_visual_reviews_dropdown(self):
         self._visual_review_dropdown.click_button()
+
+
+    def _click_smart_orchestration_dropdown(self):
+        self._smart_orchestration_dropdown.click_button()

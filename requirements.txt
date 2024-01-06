@@ -8,3 +8,5 @@ robotframework
 pandas
 pyperclip
 requests
+pillow
+pytest-html

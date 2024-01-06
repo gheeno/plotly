@@ -17,6 +17,13 @@ As a user, I would like to see if the NPM INSTALL CYPRESS button actually copies
     Assert that npm install cypress install button copies the right command
 
 
+As a user, I would like if the Visual Reviews page loads from the Product Option.
+    Assert that Product / Visual Reviews is accessible and loads properly
+
+
+As a user, if I hover over the Test Analytics option from the Cloud toolbar, I should see a green ring around it.
+    Assert Test Analytics has a green circle around it
+
 *** Keywords ***
 Assert weekly downloads string and header string
     test_cypress_navigation.test_assert_weekly_downloads
@@ -32,3 +39,7 @@ Assert that npm install cypress install button copies the right command
 
 Assert that Product / Visual Reviews is accessible and loads properly
     test_cypress_navigation.test_assert_product_visual_reviews_loads
+
+
+Assert Test Analytics has a green circle around it
+    test_cypress_navigation.test_assert_green_circle_around_test_analytics
