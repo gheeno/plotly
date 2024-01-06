@@ -19,17 +19,10 @@ import pytest
 
 
 class CypressNavigationTests():
-    
 
-    def setup(self):
-        load_dotenv(dotenv_path=".env.url")
-        landing_page_url = os.getenv('CYPRESS_LANDING_PAGE')
 
-        service = Service()
-        options = webdriver.ChromeOptions()
-        # options.add_argument('--headless') 
-        self.driver = webdriver.Chrome(service=service, options=options)
-        self.driver.get(landing_page_url)
+    def __init__(self, driver):
+        self.driver = driver
 
 
     def assert_weekly_downloads_value(self):
@@ -41,7 +34,7 @@ class CypressNavigationTests():
         try:
             clp._scroll_to_header_testimony()
             assert clp._get_string_header_testimony() == "Loved by OSS, trusted by Enterprise"
-            assert clp._get_string_weekly_download_amount() == "5M+"
+            assert clp._get_string_weekly_download_amount() == "51M+"
         except Exception as e:
             logging.error(f"An error occurred: {e}")
             raise
@@ -131,47 +124,44 @@ class CypressNavigationTests():
             cco._clear_output_results()
         
 
-    def teardown(self):
-        self.driver.close()
+###########
+            
 
+load_dotenv(dotenv_path=".env.url")
+landing_page_url = os.getenv('CYPRESS_LANDING_PAGE')
 
 ### ROBOTFRAMEWORK / PYTEST ###
 @pytest.mark.flaky(reruns=1, reruns_delay=2)
-def test_assert_weekly_downloads():
-    clpt = CypressNavigationTests()
-    clpt.setup()
+def test_assert_weekly_downloads(selenium_driver):
+    selenium_driver.get(landing_page_url)
+    clpt = CypressNavigationTests(selenium_driver)
     clpt.assert_weekly_downloads_value()
-    clpt.teardown()
 
 
 @pytest.mark.flaky(reruns=1, reruns_delay=2)
-def test_assert_about_cypress_is_present():
-    clpt = CypressNavigationTests()
-    clpt.setup()
+def test_assert_about_cypress_is_present(selenium_driver):
+    selenium_driver.get(landing_page_url)
+    clpt = CypressNavigationTests(selenium_driver)
     clpt.assert_about_cypress_is_present()
-    clpt.teardown()
 
 
 @pytest.mark.flaky(reruns=1, reruns_delay=2)
-def test_assert_npm_install_command_is_copied():
-    clpt = CypressNavigationTests()
-    clpt.setup()
+def test_assert_npm_install_command_is_copied(selenium_driver):
+    selenium_driver.get(landing_page_url)
+    clpt = CypressNavigationTests(selenium_driver)
     clpt.assert_npm_install_is_copied()
-    clpt.teardown()
 
 
 @pytest.mark.flaky(reruns=1, reruns_delay=2)
-def test_assert_product_visual_reviews_loads():
+def test_assert_product_visual_reviews_loads(selenium_driver):
     # Flaky Test.
-    clpt = CypressNavigationTests()
-    clpt.setup()
+    selenium_driver.get(landing_page_url)
+    clpt = CypressNavigationTests(selenium_driver)
     clpt.assert_product_visual_reviews_loads()
-    clpt.teardown()
 
 
 @pytest.mark.flaky(reruns=1, reruns_delay=2)
-def test_assert_green_circle_around_test_analytics():
-    clpt = CypressNavigationTests()
-    clpt.setup()
+def test_assert_green_circle_around_test_analytics(selenium_driver):
+    selenium_driver.get(landing_page_url)
+    clpt = CypressNavigationTests(selenium_driver)
     clpt.assert_green_circle_around_test_analytics()
-    clpt.teardown()
