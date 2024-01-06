@@ -27,6 +27,7 @@ class CypressNavigationTests():
 
         service = Service()
         options = webdriver.ChromeOptions()
+        # options.add_argument('--headless') 
         self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get(landing_page_url)
 
@@ -157,6 +158,7 @@ def test_assert_npm_install_command_is_copied():
 
 
 def test_assert_product_visual_reviews_loads():
+    # Flaky Test.
     clpt = CypressNavigationTests()
     clpt.setup()
     clpt.assert_product_visual_reviews_loads()

@@ -9,12 +9,20 @@ Plotly Dash 2.0 practice.
     ~ pip install -e .
     ```
 
+2. Install Google Chrome
+
 ### STEPS ###
 
 Cypress IO:
 
 1. Execute Pytest.
 - `~ pytest -v ./src/tests/pagetests/test_cypress_landing_page.py`
+
+2. Execute Pytest with results.
+- `~ pytest -v --html=report.html --self-contained-html ./src/tests/pagetests/test_cypress_navigation.py`
+
+3. Execute Test with Robotframework.
+- `~ robot -d ./results ./src/tests/robot/test_cypress_navigation.robot`
 
 Dash App :
 1. Run the web app. 
