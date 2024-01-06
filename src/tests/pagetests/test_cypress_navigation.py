@@ -136,7 +136,7 @@ class CypressNavigationTests():
 
 
 ### ROBOTFRAMEWORK / PYTEST ###
-@pytest.mark.flaky(reruns=3, reruns_delay=2)
+@pytest.mark.flaky(reruns=1, reruns_delay=2)
 def test_assert_weekly_downloads():
     clpt = CypressNavigationTests()
     clpt.setup()
@@ -144,7 +144,7 @@ def test_assert_weekly_downloads():
     clpt.teardown()
 
 
-@pytest.mark.flaky(reruns=3, reruns_delay=2)
+@pytest.mark.flaky(reruns=1, reruns_delay=2)
 def test_assert_about_cypress_is_present():
     clpt = CypressNavigationTests()
     clpt.setup()
@@ -152,7 +152,7 @@ def test_assert_about_cypress_is_present():
     clpt.teardown()
 
 
-@pytest.mark.flaky(reruns=3, reruns_delay=2)
+@pytest.mark.flaky(reruns=1, reruns_delay=2)
 def test_assert_npm_install_command_is_copied():
     clpt = CypressNavigationTests()
     clpt.setup()
@@ -160,7 +160,7 @@ def test_assert_npm_install_command_is_copied():
     clpt.teardown()
 
 
-@pytest.mark.flaky(reruns=3, reruns_delay=2)
+@pytest.mark.flaky(reruns=1, reruns_delay=2)
 def test_assert_product_visual_reviews_loads():
     # Flaky Test.
     clpt = CypressNavigationTests()
@@ -169,7 +169,7 @@ def test_assert_product_visual_reviews_loads():
     clpt.teardown()
 
 
-@pytest.mark.flaky(reruns=3, reruns_delay=2)
+@pytest.mark.flaky(reruns=1, reruns_delay=2)
 def test_assert_green_circle_around_test_analytics():
     clpt = CypressNavigationTests()
     clpt.setup()
