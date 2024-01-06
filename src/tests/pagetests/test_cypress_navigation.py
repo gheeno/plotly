@@ -157,8 +157,6 @@ def test_assert_npm_install_command_is_copied():
 
 
 def test_assert_product_visual_reviews_loads():
-    # NOTE : This is a flaky test, where the URL could be either Visual Reviews or Other.
-    # I believe the hover effect sometimes captures the first value URL Seen.
     clpt = CypressNavigationTests()
     clpt.setup()
     clpt.assert_product_visual_reviews_loads()
