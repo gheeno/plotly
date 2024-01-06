@@ -7,3 +7,4 @@ pytest
 robotframework
 pandas
 pyperclip
+requests

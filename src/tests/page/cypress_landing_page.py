@@ -17,7 +17,9 @@ class CypressLandingPage(PageFactory):
         '_tab_company': ('ID', "dropdownCompany"),
         '_flex_about_cypress': ('XPATH', "//span[text()='About Cypress ']"),
         '_button_install': ('XPATH', "//button[text()=' Install ']"),
-        '_button_npm_install_cypress': ('XPATH', "//span[text()='npm install cypress']")
+        '_button_npm_install_cypress': ('XPATH', "//span[text()='npm install cypress']"),
+        '_tab_product': ('ID', "dropdownProduct"),
+        '_visual_review_dropdown': ('XPATH', "//span[text()='Visual Reviews']")
     }
 
     ## ACTIONS ##
@@ -45,5 +47,14 @@ class CypressLandingPage(PageFactory):
     def _click_install_button(self):
         self._button_install.click_button()
 
+
     def _click_npm_install_cypress_button(self):
         self._button_npm_install_cypress.click_button()
+
+
+    def _hover_product_tab(self):
+        self._tab_product.hover()
+    
+
+    def _click_visual_reviews_dropdown(self):
+        self._visual_review_dropdown.click_button()

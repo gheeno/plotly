@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(
 
 from page.cypress_landing_page import CypressLandingPage
 from page.cypress_about_us_page import CypressAboutUsPage
+from page.cypress_visual_reviews_page import CypressVisualReviewsPage
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv
@@ -77,6 +78,24 @@ class CypressLandingPageTest():
         except Exception as e:
             print(f"An error occurred: {e}")
             raise
+
+
+    def assert_product_visual_reviews_loads(self):
+        '''
+         • User is able to click on “Product” and then “visual review”
+        '''
+        clp = CypressLandingPage(self.driver)
+        cvr = CypressVisualReviewsPage(self.driver)
+        try:
+            clp._hover_product_tab() # clicking the product tab doesn't "show" the visual review on the next page, we have to hover.
+            clp._click_visual_reviews_dropdown()
+            visual_review_url = cvr._get_current_url()
+            assert visual_review_url == "https://www.cypress.io/cloud?v=2#visual_reviews"
+            assert cvr._check_http_response_code(visual_review_url) == 200
+            
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            raise
         
 
     def teardown(self):
@@ -102,4 +121,11 @@ def test_assert_npm_install_command_is_copied():
     clpt = CypressLandingPageTest()
     clpt.setup()
     clpt.assert_npm_install_is_copied()
+    clpt.teardown()
+
+
+def test_assert_product_visual_reviews_loads():
+    clpt = CypressLandingPageTest()
+    clpt.setup()
+    clpt.assert_product_visual_reviews_loads()
     clpt.teardown()

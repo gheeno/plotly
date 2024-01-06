@@ -28,3 +28,7 @@ Assert ABOUT CYPRESS page by using hover and click
 
 Assert that npm install cypress install button copies the right command
     test_cypress_navigation.test_assert_npm_install_command_is_copied
+
+
+Assert that Product / Visual Reviews is accessible and loads properly
+    test_cypress_navigation.test_assert_product_visual_reviews_loads
