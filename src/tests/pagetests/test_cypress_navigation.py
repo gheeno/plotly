@@ -1,6 +1,3 @@
-# • User is able to click on “Install” and then on “npm install cypress” and make sure
-# the copied text is “npm install cypress --save-dev”
-
 # • User is able to click on “Product” and then “visual review”
 
 # Bonus:
@@ -17,6 +14,8 @@ from page.cypress_about_us_page import CypressAboutUsPage
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv
+import time
+import pyperclip
 
 
 class CypressLandingPageTest():
@@ -61,10 +60,28 @@ class CypressLandingPageTest():
         except Exception as e:
             print(f"An error occurred: {e}")
             raise
+
+
+    def assert_npm_install_is_copied(self):
+        '''
+        • User is able to click on “Install” and then on “npm install cypress” and make sure
+          the copied text is “npm install cypress --save-dev”
+        '''
+        clp = CypressLandingPage(self.driver)
+        try:
+            clp._click_install_button()
+            clp._click_npm_install_cypress_button()
+            time.sleep(1) # wait for OS to copy the string.
+            copied_string = pyperclip.paste()
+            assert copied_string == "npm install cypress --save-dev"
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            raise
         
 
     def teardown(self):
         self.driver.close()
+
 
 ### ROBOTFRAMEWORK / PYTEST ###
 def test_assert_weekly_downloads():
@@ -73,8 +90,16 @@ def test_assert_weekly_downloads():
     clpt.assert_weekly_downloads_value()
     clpt.teardown()
 
+
 def test_assert_about_cypress_is_present():
     clpt = CypressLandingPageTest()
     clpt.setup()
     clpt.assert_about_cypress_is_present()
+    clpt.teardown()
+
+
+def test_assert_npm_install_command_is_copied():
+    clpt = CypressLandingPageTest()
+    clpt.setup()
+    clpt.assert_npm_install_is_copied()
     clpt.teardown()

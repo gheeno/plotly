@@ -6,3 +6,4 @@ allure-pytest
 pytest
 robotframework
 pandas
+pyperclip
