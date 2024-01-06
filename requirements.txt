@@ -10,3 +10,4 @@ pyperclip
 requests
 pillow
 pytest-html
+pytest-rerunfailures
