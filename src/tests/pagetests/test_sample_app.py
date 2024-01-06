@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 
 class SampleAppTests():
 
+
     def setup(self):
         load_dotenv(dotenv_path=".env.url")
         landing_page_url = os.getenv('DASH_APP')
@@ -21,6 +22,7 @@ class SampleAppTests():
         # options.add_argument('--headless') 
         self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get(landing_page_url)
+
 
     def test_sample_app_dropdown_selector(self):
         '''
@@ -37,8 +39,10 @@ class SampleAppTests():
             print(f"An error occurred: {e}")
             raise
 
+
     def teardown(self):
         self.driver.close()
+
 
 ### ROBOT FRAMEWORK / PYTEST ###
 def test_sample_app_dropdown():

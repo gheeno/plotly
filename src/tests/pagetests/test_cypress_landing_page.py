@@ -1,5 +1,3 @@
-# • User is able to click on Company and then on “About Cypress”
-
 # • User is able to click on “Install” and then on “npm install cypress” and make sure
 # the copied text is “npm install cypress --save-dev”
 
@@ -15,6 +13,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(
   os.path.dirname(__file__), '..')))
 
 from page.cypress_landing_page import CypressLandingPage
+from page.cypress_about_us_page import CypressAboutUsPage
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv
@@ -22,6 +21,7 @@ from dotenv import load_dotenv
 
 class CypressLandingPageTest():
     
+
     def setup(self):
         load_dotenv(dotenv_path=".env.url")
         landing_page_url = os.getenv('CYPRESS_LANDING_PAGE')
@@ -30,7 +30,8 @@ class CypressLandingPageTest():
         options = webdriver.ChromeOptions()
         self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get(landing_page_url)
-        
+
+
     def assert_weekly_downloads_value(self):
         '''
         • Users are able to visit the website and able to scroll down to “Loved by OSS,
@@ -44,13 +45,36 @@ class CypressLandingPageTest():
         except Exception as e:
             print(f"An error occurred: {e}")
             raise
+
+
+    def assert_about_cypress_is_present(self):
+        '''
+        • User is able to click on Company and then on “About Cypress”
+        '''
+        clp = CypressLandingPage(self.driver)
+        cau = CypressAboutUsPage(self.driver)
+        try:
+            clp._hover_company_tab()
+            clp._click_about_cypress_flex()
+            assert cau._get_current_url() == "https://www.cypress.io/about-us"
+            assert cau._get_string_about_us_message() == "Cypress testing tools support developers all around the world by making it easier to build and test applications."
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            raise
         
+
     def teardown(self):
         self.driver.close()
 
-### PYTEST ###
+### ROBOTFRAMEWORK / PYTEST ###
 def test_assert_weekly_downloads():
     clpt = CypressLandingPageTest()
     clpt.setup()
     clpt.assert_weekly_downloads_value()
+    clpt.teardown()
+
+def test_assert_about_cypress_is_present():
+    clpt = CypressLandingPageTest()
+    clpt.setup()
+    clpt.assert_about_cypress_is_present()
     clpt.teardown()
