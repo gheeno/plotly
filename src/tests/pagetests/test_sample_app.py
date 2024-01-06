@@ -6,15 +6,21 @@ sys.path.insert(0, os.path.abspath(os.path.join(
 from page.sample_app_page import SampleApp
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from dotenv import load_dotenv
 
 
 class SampleAppTests():
 
     def setup(self):
+        load_dotenv(dotenv_path=".env.url")
+        landing_page_url = os.getenv('DASH_APP')
+        print(landing_page_url)
+    
         service = Service()
         options = webdriver.ChromeOptions()
+        # options.add_argument('--headless') 
         self.driver = webdriver.Chrome(service=service, options=options)
-        self.driver.get("http://127.0.0.1:7685")
+        self.driver.get(landing_page_url)
 
     def test_sample_app_dropdown_selector(self):
         '''

@@ -13,17 +13,18 @@ Plotly Dash 2.0 practice.
 
 Cypress IO:
 
-1. TODO
+1. Execute Pytest.
+- `~ pytest -v ./src/tests/pagetests/test_cypress_landing_page.py`
 
 Dash App :
 1. Run the web app. 
-- `~ python src/dash/apps/sample_app.py`
+- `~ python src/dash_app/sample_app.py`
 
 2. Execute pytest.
 - `~ pytest -v`
 
 3. Additional : Execute Robotframework
-- `~ robot -d ./results ./src/dash/tests/robot/test_sample_app.robot `
+- `~ robot -d ./results ./src/tests/robot/test_sample_app.robot `
 
 ### NOTES During development ###
 1. To pause the debugger in chrome due to dynamic objects : 
