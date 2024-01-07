@@ -1,7 +1,10 @@
 Plotly - challenge
 
 ### INSTALLATION ###
-1. Install pip requirements : 
+
+1. Install Python 3.11.X
+
+2. Install pip requirements : 
     ```commandline
     ~ pip install -r requirements.txt 
     ```
@@ -9,7 +12,7 @@ Plotly - challenge
     ~ pip install -e .
     ```
 
-2. Install Google Chrome
+3. Install Google Chrome
 
 ### STEPS ###
 
