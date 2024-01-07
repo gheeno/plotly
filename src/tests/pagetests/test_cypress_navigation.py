@@ -24,6 +24,23 @@ class CypressNavigationTests():
     def __init__(self, driver):
         self.driver = driver
 
+    # if robotframework is still needed.
+    def setup(self):
+        load_dotenv(dotenv_path=".env.url")
+        landing_page_url = os.getenv('CYPRESS_LANDING_PAGE')
+        print(landing_page_url)
+    
+        service = Service()
+        options = webdriver.ChromeOptions()
+        # options.add_argument('--headless') 
+        self.driver = webdriver.Chrome(service=service, options=options)
+        self.driver.get(landing_page_url)
+
+    
+    # if robotframework is still needed.
+    def teardown(self):
+        self.driver.close()
+
 
     def assert_weekly_downloads_value(self):
         '''
@@ -34,7 +51,7 @@ class CypressNavigationTests():
         try:
             clp._scroll_to_header_testimony()
             assert clp._get_string_header_testimony() == "Loved by OSS, trusted by Enterprise"
-            assert clp._get_string_weekly_download_amount() == "51M+"
+            assert clp._get_string_weekly_download_amount() == "5M+"
         except Exception as e:
             logging.error(f"An error occurred: {e}")
             raise
