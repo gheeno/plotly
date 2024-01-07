@@ -50,6 +50,7 @@ class CypressNavigationTests():
         clp = CLP(self.driver)
         try:
             clp._scroll_to_header_testimony()
+            clp._scroll_to_swiper()
             assert clp._get_string_header_testimony() == "Loved by OSS, trusted by Enterprise"
             assert clp._get_string_weekly_download_amount() == "5M+"
         except Exception as e:

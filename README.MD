@@ -15,13 +15,14 @@ Plotly Dash 2.0 practice.
 
 Cypress IO:
 
-1. Execute Pytest.
-- `~ pytest -v ./src/tests/pagetests/test_cypress_navigation.py`
-
-2. Execute Pytest with results.
+1. Execute Pytest with report.html.
 - `~ pytest -v --html=report.html ./src/tests/pagetests/test_cypress_navigation.py`
 
+2. To view the report
+- `in the root folder ./plotly/ , there should be a report.html file after a pytest run ( following the command above ), open it via VSCode Extension or a browser.`
+
 Dash App :
+
 1. Run the web app. 
 - `~ python src/dash_app/sample_app.py`
 

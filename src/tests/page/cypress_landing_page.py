@@ -20,7 +20,8 @@ class CypressLandingPage(PageFactory):
         '_button_npm_install_cypress': ('XPATH', "//span[text()='npm install cypress']"),
         '_tab_product': ('ID', "dropdownProduct"),
         '_visual_review_dropdown': ('XPATH', "(//span[text()='Visual Reviews'])[1]"),
-        '_smart_orchestration_dropdown': ('XPATH', "(//span[text()='Smart Orchestration'])[1]")
+        '_smart_orchestration_dropdown': ('XPATH', "(//span[text()='Smart Orchestration'])[1]"),
+        '_pagination_swiper': ('XPATH', "(//span[contains(@class,'wiper-pagination-bullet')])[1]")
     }
 
     ## ACTIONS ##
@@ -31,6 +32,13 @@ class CypressLandingPage(PageFactory):
 
     def _scroll_to_header_testimony(self):
         self._header_testimony.hover()
+
+    
+    def _scroll_to_swiper(self):
+        '''
+        So that the _label_weekly_downloads_amount can be seen by the user.
+        '''
+        self._pagination_swiper.hover()
 
 
     def _get_string_weekly_download_amount(self):
