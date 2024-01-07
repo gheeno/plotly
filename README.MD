@@ -19,7 +19,7 @@ Cypress IO:
 - `~ pytest -v ./src/tests/pagetests/test_cypress_landing_page.py`
 
 2. Execute Pytest with results.
-- `~ pytest -v --html=report.html --self-contained-html ./src/tests/pagetests/test_cypress_navigation.py`
+- `~ pytest -v --html=report.html ./src/tests/pagetests/test_cypress_navigation.py`
 
 Dash App :
 1. Run the web app. 
