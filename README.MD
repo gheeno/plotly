@@ -16,7 +16,7 @@ Plotly Dash 2.0 practice.
 Cypress IO:
 
 1. Execute Pytest.
-- `~ pytest -v ./src/tests/pagetests/test_cypress_landing_page.py`
+- `~ pytest -v ./src/tests/pagetests/test_cypress_navigation.py`
 
 2. Execute Pytest with results.
 - `~ pytest -v --html=report.html ./src/tests/pagetests/test_cypress_navigation.py`
