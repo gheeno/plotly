@@ -14,6 +14,8 @@ Plotly - challenge
 
 3. Install Google Chrome
 
+4. Clone the repo 
+
 ### STEPS ###
 
 Cypress IO:
