@@ -19,7 +19,7 @@ Cypress IO:
 - `~ pytest -v --html=report.html ./src/tests/pagetests/test_cypress_navigation.py`
 
 2. To view the report
-- `in the root folder ./plotly/ , there should be a report.html file after a pytest run ( following the command above ), open it via VSCode Extension or a browser.`
+- `In the root folder ./plotly/ , there should be a report.html file after a pytest run ( following the command above ), open it via VSCode Extension or a browser.`
 
 Dash App :
 
@@ -27,7 +27,7 @@ Dash App :
 - `~ python src/dash_app/sample_app.py`
 
 2. Execute pytest.
-- `~ pytest -v`
+- `~ pytest -v ./src/tests/pagetests/test_sample_app.py`
 
 3. Additional : Execute Robotframework
 - `~ robot -d ./results ./src/tests/robot/test_sample_app.robot `
