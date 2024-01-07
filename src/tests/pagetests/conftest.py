@@ -1,9 +1,12 @@
 import time
+import os
 from datetime import datetime    
 import pytest
 from selenium import webdriver as selenium_webdriver
 from selenium.webdriver.chrome.options import Options
 
+# Define REPORT_PATH
+REPORT_PATH = "./src/report/"
 
 # set up webdriver fixture
 @pytest.fixture(scope='session')
@@ -21,19 +24,25 @@ def selenium_driver(request):
     yield driver
     driver.quit()
 
-
 # set up a hook to be able to check if a test has failed
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
-    # execute all other hooks to obtain the report object
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item):
+    pytest_html = item.config.pluginmanager.getplugin("html")
     outcome = yield
-    rep = outcome.get_result()
-
-    # set a report attribute for each phase of a call, which can
-    # be "setup", "call", "teardown"
-
-    setattr(item, "rep_" + rep.when, rep)
-
+    report = outcome.get_result()
+    extra = getattr(report, "extra", [])
+    if report.when == "call":
+        feature_request = item.funcargs['request']
+        driver = feature_request.getfixturevalue('selenium_driver')
+        nodeid = item.nodeid
+        xfail = hasattr(report, "wasxfail")
+        if (report.skipped and xfail) or (report.failed and not xfail):
+            file_name = f'{nodeid}_{datetime.today().strftime("%Y-%m-%d_%H_%M")}.png'.replace("/", "_").replace("::", "_").replace(".py", "")
+            img_path = os.path.join(REPORT_PATH, "screenshots", file_name)
+            driver.save_screenshot(img_path)
+            screenshot = driver.get_screenshot_as_base64()  # the hero
+            extra.append(pytest_html.extras.image(screenshot, ''))
+        report.extra = extra
 
 # check if a test has failed
 @pytest.fixture(scope="function", autouse=True)
@@ -49,9 +58,8 @@ def test_failed_check(request):
             take_screenshot(driver, request.node.nodeid)
             print("executing test failed", request.node.nodeid)
 
-
 # make a screenshot with a name of the test, date and time
 def take_screenshot(driver, nodeid):
     time.sleep(1)
     file_name = f'{nodeid}_{datetime.today().strftime("%Y-%m-%d_%H:%M")}.png'.replace("/","_").replace("::","__")
-    driver.save_screenshot(file_name)
+    driver.save_screenshot(os.path.join(REPORT_PATH, "screenshots", file_name))
