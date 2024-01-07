@@ -1,4 +1,4 @@
-Plotly Dash 2.0 practice.
+Plotly - challenge
 
 ### INSTALLATION ###
 1. Install pip requirements : 
