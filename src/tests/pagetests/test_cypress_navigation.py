@@ -150,6 +150,8 @@ landing_page_url = os.getenv('CYPRESS_LANDING_PAGE')
 
 
 ### PYTEST ###
+
+
 @pytest.mark.flaky(reruns=1, reruns_delay=2)
 def test_assert_weekly_downloads(selenium_driver):
     selenium_driver.get(landing_page_url)
